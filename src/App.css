@@ -1,0 +1,27 @@
+:root{
+    --primary-color: #F0C900;
+}
+.flex{
+    display: flex;
+    flex-wrap: wrap;
+}
+.justify-between{
+    justify-content: space-between;
+}
+.justify-center{
+    justify-content: center;
+}
+.align-center{
+    align-items: center;
+}
+.hidden{
+    display: none;
+}
+.btn-yellow{
+    background-color: var(--primary-color);
+    padding: 10px;
+    border-radius: 8px;
+    font-weight: 700;
+    border: none;
+    margin-top: 5px;
+}
