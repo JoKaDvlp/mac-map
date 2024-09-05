@@ -72,6 +72,7 @@ export function SearchProvider({ children }) {
             // Pour chaque restaurants, ajout d'un marker avec popup
             const leafletMarker = L.marker([parseFloat(restaurant.lat), parseFloat(restaurant.lon)]).addTo(map);
             leafletMarker.bindPopup(`${restaurant.display_name}<br><button class="popup-btn btn-yellow">Choisir</button>`);
+            // On stocke le marker pour pouvoir le retrouver et le supprimer à la prochaine recherche
             markersRef.current.push(leafletMarker);
 
             // Ajout écouteur d'évènements pour le boutons du popup ouvert
