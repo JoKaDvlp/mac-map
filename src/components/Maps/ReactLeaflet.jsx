@@ -1,3 +1,10 @@
+/*
+
+Composant ReactLeaflet intégrant tous les composants de l'application
+
+*/
+
+
 import { MapContainer, TileLayer } from "react-leaflet";
 import 'leaflet/dist/leaflet.css';
 import SearchBar from "../SearchBar/SearchBar";
@@ -13,6 +20,7 @@ export default function ReactLeaflet(){
                 center={[47, 2]} 
                 zoom={5}
                 scrollWheelZoom={true}
+                zoomControl={false}
                 style={{
                     height: "100vh",
                     width: "100vw",

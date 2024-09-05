@@ -1,13 +1,23 @@
 .overlay{
     position: absolute;
     z-index: 1000;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+}
+.overlay-content{
     background-color: white;
     border-radius: 8px 8px 0 0;
     padding: 20px;
     box-shadow: 0 -4px 4px rgba(0, 0, 0, 0.25);
-    bottom: 0;
-    left: 0;
-    width: 100%;
+}
+.btn-geolocate{
+    margin-right: 20px;
+    text-align: end;
+}
+.btn-geolocate button{
+    width: 40px;
+    height: 40px;
 }
 .overlay-title{
     font-weight: 700;
