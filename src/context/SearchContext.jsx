@@ -28,7 +28,7 @@ export function SearchProvider({ children }) {
 
     useEffect(() => {
         if (searchedLocation) {
-            fetch(`https://nominatim.openstreetmap.org/search?q=${searchedLocation}&addressdetails=1&format=json&limit=10&countrycodes=fr`)
+            fetch(`https://nominatim.openstreetmap.org/search?q=${encodeURIComponent(searchedLocation)}&addressdetails=1&format=json&limit=10&countrycodes=fr`)
                 .then(res => res.json())
                 .then(data => {
                     setLocations(data)
@@ -38,7 +38,7 @@ export function SearchProvider({ children }) {
 
     useEffect(() => {
         if (viewBoundingbox && viewBoundingbox.length === 4) {
-            let url = `https://nominatim.openstreetmap.org/search?q=McDonald's&addressdetails=1&format=json&countrycodes=fr&viewbox=${parseFloat(viewBoundingbox[2])},${parseFloat(viewBoundingbox[1])},${parseFloat(viewBoundingbox[3])},${parseFloat(viewBoundingbox[0])}&bounded=1`
+            let url = `https://nominatim.openstreetmap.org/search?q=McDonald's&addressdetails=1&format=json&countrycodes=fr&viewbox=${encodeURIComponent(parseFloat(viewBoundingbox[2]))},${encodeURIComponent(parseFloat(viewBoundingbox[0]))},${encodeURIComponent(parseFloat(viewBoundingbox[3]))},${encodeURIComponent(parseFloat(viewBoundingbox[1]))}&bounded=1`
             fetch(url)
                 .then(res => res.json())
                 .then(data => {
