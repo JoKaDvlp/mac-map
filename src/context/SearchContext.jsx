@@ -28,7 +28,6 @@ export function SearchProvider({ children }) {
     const [viewBoundingbox, setViewBoundingbox] = useState([]);
     const [restaurants, setRestaurants] = useState([]);
     const [restaurantSelected, setRestaurantSelected] = useState({});
-    const [userLocation, setUserLocation] = useState()
 
     const markersRef = useRef([]);
 
@@ -93,20 +92,18 @@ export function SearchProvider({ children }) {
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(
                 (position) => {
-                    setUserLocation({
-                        latitude: position.coords.latitude,
-                        longitude: position.coords.longitude,
-                    });
+                    let userLatitude = position.coords.latitude
+                    let userLongitude = position.coords.longitude
+                    // Récupère les données lié à la géolocalisation
+                    fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${parseFloat(userLatitude)}&lon=${parseFloat(userLongitude)}&zoom=10`)
+                    .then(res => res.json())
+                    .then(data => {
+                        setLocations(data)
+                        setViewBoundingbox(data.boundingbox);
+                    })
                 },
             );
         }
-        // Récupère les données lié à la géolocalisation
-        fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${parseFloat(userLocation.latitude)}&lon=${parseFloat(userLocation.longitude)}&zoom=10`)
-        .then(res => res.json())
-        .then(data => {
-            setLocations(data)
-            setViewBoundingbox(data.boundingbox);
-        })
     }
 
 
